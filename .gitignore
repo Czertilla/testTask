@@ -3,3 +3,4 @@
 *.db
 *.env
 *.env-non-dev
+**/__pycache__/
