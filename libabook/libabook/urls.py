@@ -21,6 +21,7 @@ from .yasg import urlpatterns as doc_url
 urlpatterns = [
     path('store/', include("store.urls")),
     path('admin/', admin.site.urls),
+    path('api/', include('rest_framework.urls'))
 ]
 
 urlpatterns += doc_url

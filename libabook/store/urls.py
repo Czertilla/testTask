@@ -1,8 +1,11 @@
-from .views import index
+from .views import BookViewSet, LibraryViewSet
 from django.urls import path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
+from rest_framework.routers import DefaultRouter
 from drf_yasg import openapi
+
+router = DefaultRouter()
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -13,6 +16,10 @@ schema_view = get_schema_view(
    permission_classes=(permissions.AllowAny,),
 )
 
+router.register(r'libraries', LibraryViewSet, basename='libraries')
+router.register(r'books', BookViewSet, basename='books')
+
 urlpatterns = [
-    path('home/', index),
+   #  path('home/', index),
+   *router.urls
 ]
