@@ -8,7 +8,6 @@ from rest_framework.status import HTTP_400_BAD_REQUEST
 from django.db.models import Manager
 from libabook.pagination import NumberPagination, NumberPaginatorInspector
 from rest_framework.parsers import MultiPartParser, FileUploadParser
-from drf_yasg.utils import swagger_auto_schema 
 
 
 class LibraryViewSet(ModelViewSet):
@@ -38,7 +37,6 @@ class BookViewSet(ModelViewSet):
     queryset = BookSerializer.Meta.model.objects.all()
 
 
-    @swagger_auto_schema(paginator_inspectors=[NumberPaginatorInspector,])
     @action(methods=["GET"], detail=True, pagination_class = NumberPagination)
     def libraries(self, request: Request, pk: UUID) -> Response:
         obj = self.get_object()
