@@ -28,5 +28,5 @@ class LibraryToBook(UUIDMixin, TimestampMixin):
     library = ForeignKey(Library, on_delete=CASCADE)
     book = ForeignKey(Book, on_delete=CASCADE)
 
-    available = IntegerField()
-    booked = IntegerField(default=0, blank=True)
+    available = IntegerField(blank=True, null=True)
+    booked = IntegerField(default=0, blank=True, null=True)
